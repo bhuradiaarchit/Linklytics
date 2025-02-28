@@ -1,26 +1,16 @@
 import './App.css'
-import {  Route, Routes, BrowserRouter } from 'react-router-dom'
-import LandingPage from './components/LandingPage'
-import AboutPage from './components/AboutPage';
-import PrivateRoute from './components/wrapper/PrivateRoute';
-import LoginPage from './components/LoginPage'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { getApps } from './utils/helper'
 
 function App() {
 
+  const CurrentApp = getApps();
 
   return (
-    <>
-       <BrowserRouter>
-       <Routes>
-          <Route path='/' element={<PrivateRoute><LandingPage /></PrivateRoute>}/>
-          <Route path='/about' element={<AboutPage />}/>
-          <Route path='/login' element={<LoginPage />}/>
-        </Routes>
-        </BrowserRouter>
-    </>
+    <Router>
+      <CurrentApp />
+    </Router>
   )
 }
 
 export default App
-
-
